@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .hidden { display: none; }
+        .list-group-item { padding: 8px; cursor: pointer; }
+        .list-group-item:hover { background-color: #f3f4f6; }
+    </style>
+</head>
+<body class="bg-gray-100 py-10">
+    <div class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-md">
+        <a th:href="@{/login}" class="inline-block mb-4 text-indigo-600 hover:text-indigo-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            Back
+        </a>
+        <div th:if="${msg}" id="registerMsg" class="mt-4 bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded relative" role="alert">
+            <strong class="font-bold">Success!</strong>
+            <span th:text="${msg}" class="block sm:inline"></span>
+        </div>
+        <hr class="h-px my-5 bg-gray-200 border-0 dark:bg-gray-700">
+        <h1 class="text-2xl font-bold mb-6">Register</h1>
+        <form id="registrationForm" class="space-y-4" th:action="@{/attemptregister}" th:object="${registerRequest}" method="post">
+            <div>
+                <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+                <input type="text" id="username" name="username" th:field="*{username}" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" required>
+                <span class="text-red-500 text-sm hidden" id="usernameError">Please enter a valid username.</span>
+            </div>
+            <div>
+                <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                <input type="text" id="name" name="name" th:field="*{name}" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" required>
+                <span class="text-red-500 text-sm hidden" id="nameError">Please enter a valid name.</span>
+            </div>
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input type="email" id="email" name="email" th:field="*{email}" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" required>
+                <span class="text-red-500 text-sm hidden" id="emailError">Please enter a valid email.</span>
+            </div>
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                <input type="password" id="password" name="password" th:field="*{password}" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" required>
+                <span class="text-red-500 text-sm hidden" id="passwordError">Please enter a valid password.</span>
+            </div>
+            <div>
+                <label for="retypePassword" class="block text-sm font-medium text-gray-700">Retype Password</label>
+                <input type="password" id="retypePassword" name="retypePassword" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" required>
+                <span class="text-red-500 text-sm hidden" id="retypePasswordError">Passwords do not match.</span>
+            </div>
+            <div>
+                <label for="dob" class="block text-sm font-medium text-gray-700">Date of Birth</label>
+                <input type="date" id="dob" name="dob" th:field="*{dateOfBirth}" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" required>
+                <span class="text-red-500 text-sm hidden" id="dobError">You must be at least 18 years old.</span>
+            </div>
+            <div>
+                <label for="country" class="block text-sm font-medium text-gray-700">Country</label>
+                <input type="text" id="country" name="country" th:field="*{country}" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" oninput="filterCountries()" required>
+                <ul id="countryList" class="mt-1 border border-gray-300 rounded-md shadow-sm hidden list-group"></ul>
+                <span class="text-red-500 text-sm hidden" id="countryError">Please select a valid country.</span>
+            </div>
+            <div class="flex items-start">
+                <div class="flex items-center h-5">
+                    <input id="terms" name="terms" type="checkbox" class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" required>
+                </div>
+                <div class="ml-3 text-sm">
+                    <label for="terms" class="font-medium text-gray-700">I agree to the <a class="text-indigo-600 hover:text-indigo-500">terms and conditions</a></label>
+                </div>
+            </div>
+            <div>
+                <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700">Register</button>
+            </div>
+        </form>
+        <div th:if="${err}" id="registerAlert" class="mt-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <strong class="font-bold">Failed!</strong>
+            <span th:text="${err}" class="block sm:inline"></span>
+        </div>
+    </div>
+    <script th:src="@{/assets/js/register.js}"></script>
+</body>
+</html>

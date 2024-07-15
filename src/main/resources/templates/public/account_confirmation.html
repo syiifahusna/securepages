@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:if="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Confirmation</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+  <div th:if="${msg}" class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full text-center">
+    <h1 th:text="${msg}" class="text-2xl font-bold mb-4"></h1>
+    <p class="mb-6 text-gray-600">Your account has been successfully confirmed. You can now log in and start using our services.</p>
+    <a th:href="@{/login}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-200">Go to Login</a>
+  </div>
+
+  <div th:if="${err}" class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full text-center">
+    <h1 th:text="${err}" class="text-2xl font-bold mb-4 text-red-500"></h1>
+    <p class="mb-6 text-gray-600">Unfortunately, the link is unavailable or expired</p>
+  </div>
+
+</body>
+</html>
