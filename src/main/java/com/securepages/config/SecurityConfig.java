@@ -53,16 +53,16 @@ public class SecurityConfig{
                 }
             }
             if (isAdmin) {
-                response.sendRedirect("/securepages/admin/home");
+                response.sendRedirect("/admin/home");
             } else if (isGuest) {
-                response.sendRedirect("/securepages/guest/home");
+                response.sendRedirect("/guest/home");
             }
         };
     }
 
     @Bean
     public AuthenticationFailureHandler myAuthenticationFailureHandler() {
-        return (request, response, exception) -> response.sendRedirect("/securepages/login?err=wrong credential");
+        return (request, response, exception) -> response.sendRedirect("/login?err=wrong_cred");
     }
 
     @Bean
@@ -87,7 +87,7 @@ public class SecurityConfig{
                     .and()
                     .logout()
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/securepages/login?msg=you have logout")
+                        .logoutSuccessUrl("/login?msg=you hv logout")
                         .invalidateHttpSession(true)
                         .deleteCookies("JSESSIONID")
                         .permitAll()
@@ -96,7 +96,7 @@ public class SecurityConfig{
                         .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                         .sessionFixation().migrateSession()
                         .maximumSessions(1)
-                        .expiredUrl("/securepages/login?err=session expired");
+                        .expiredUrl("/login?err=session_expired");
         }
     }
 
@@ -117,7 +117,7 @@ public class SecurityConfig{
                     .and()
                     .logout()
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/securepages/login?msg=you have logout")
+                        .logoutSuccessUrl("/login?msg=you hv logout")
                         .invalidateHttpSession(true)
                         .deleteCookies("JSESSIONID")
                         .permitAll()
@@ -126,7 +126,7 @@ public class SecurityConfig{
                         .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                         .sessionFixation().migrateSession()
                         .maximumSessions(1)
-                        .expiredUrl("/securepages/login?err=session expired");
+                        .expiredUrl("/login?err=session_expired");
         }
     }
 
@@ -167,7 +167,7 @@ public class SecurityConfig{
                     .and()
                     .logout()
                         .logoutUrl("/logout")
-                        .logoutSuccessUrl("/securepages/login?msg=you have logout")
+                        .logoutSuccessUrl("/login?msg=you hv logout")
                         .invalidateHttpSession(true)
                         .deleteCookies("JSESSIONID")
                         .permitAll()
@@ -176,7 +176,7 @@ public class SecurityConfig{
                         .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
                         .sessionFixation().migrateSession()
                         .maximumSessions(1)
-                        .expiredUrl("/securepages/login?err=session expired")
+                        .expiredUrl("/login?err=session_expired")
                     .and()
                     .and()
                     .csrf()
