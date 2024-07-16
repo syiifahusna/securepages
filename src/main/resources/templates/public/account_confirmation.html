@@ -11,7 +11,7 @@
   <div th:if="${msg}" class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full text-center">
     <h1 th:text="${msg}" class="text-2xl font-bold mb-4"></h1>
     <p class="mb-6 text-gray-600">Your account has been successfully confirmed. You can now log in and start using our services.</p>
-    <a th:href="@{/login}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-200">Go to Login</a>
+    <a th:href="@{/securepages/login}" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-200">Go to Login</a>
   </div>
 
   <div th:if="${err}" class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full text-center">
