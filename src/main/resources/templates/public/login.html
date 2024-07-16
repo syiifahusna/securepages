@@ -12,7 +12,7 @@
 <body class="bg-gray-100 py-10">
 <div class="max-w-md mx-auto bg-white p-8 rounded-lg shadow-md">
     <h1 class="text-2xl font-bold mb-6">Login</h1>
-    <form id="loginForm" class="space-y-4"  th:action="@{/securepages/login}" method="post">
+    <form id="loginForm" class="space-y-4"  th:action="@{/login}" method="post">
         <div>
             <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
             <input type="text" id="username" name="username" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" required>
@@ -28,13 +28,13 @@
             <label for="rememberMe" class="ml-2 block text-sm text-gray-900">Remember me</label>
         </div>
         <div class="text-sm">
-            <a th:href="@{/securepages/forgot_password}" class="font-medium text-indigo-600 hover:text-indigo-500">Forgot your password?</a>
+            <a th:href="@{/forgot_password}" class="font-medium text-indigo-600 hover:text-indigo-500">Forgot your password?</a>
         </div>
         <div>
             <button type="submit" class="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700">Login</button>
         </div>
         <div class="text-sm mt-4 text-center">
-            Don't have an account? <a th:href="@{/securepages/register}" class="text-indigo-600 hover:text-indigo-500">Register here</a>.
+            Don't have an account? <a th:href="@{/register}" class="text-indigo-600 hover:text-indigo-500">Register here</a>.
         </div>
     </form>
     <div id="loginAlert" class="mt-4 hidden bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
@@ -42,6 +42,6 @@
         <span class="block sm:inline">Please check your username and password and try again.</span>
     </div>
 </div>
-<script th:src="@{/securepages/assets/js/login.js}"></script>
+<script th:src="@{/assets/js/login.js}"></script>
 </body>
 </html>
