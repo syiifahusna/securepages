@@ -62,7 +62,7 @@ public class SecurityConfig{
 
     @Bean
     public AuthenticationFailureHandler myAuthenticationFailureHandler() {
-        return (request, response, exception) -> response.sendRedirect("/securepages/login?err=wrong_cred");
+        return (request, response, exception) -> response.sendRedirect("/securepages/login?err=Wrong credential");
     }
 
     @Bean
