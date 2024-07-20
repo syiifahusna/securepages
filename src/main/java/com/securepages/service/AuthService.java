@@ -102,7 +102,7 @@ public class AuthService {
         try{
             String recipientAddress = user.getEmail();
             String subject = "Registration Confirmation";
-            String confirmationUrl = "http://localhost:8080/account_confirmation?rec="+token;
+            String confirmationUrl = "http://192.168.0.105/securepages/account_confirmation?rec="+token;
 
             MimeMessage mimeMessage = javaMailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
@@ -218,7 +218,7 @@ public class AuthService {
         try{
             String recipientAddress = user.getEmail();
             String subject = "Password Reset Request";
-            String resetPasswordUrl = "http://localhost:8080/reset_password?rec="+token;
+            String resetPasswordUrl = "http://192.168.0.105/securepages/reset_password?rec="+token;
 
             MimeMessage mimeMessage = javaMailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
