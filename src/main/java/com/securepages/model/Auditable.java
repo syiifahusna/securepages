@@ -18,13 +18,13 @@ public abstract class Auditable {
     private LocalDateTime dateCreated;
 
     @CreatedBy
-    private String createdBy;
+    private Long createdBy;
 
     @LastModifiedDate
     private LocalDateTime dateUpdated;
 
     @LastModifiedBy
-    private String lastModifiedBy;
+    private Long lastModifiedBy;
 
     public LocalDateTime getDateCreated() {
         return dateCreated;
@@ -34,11 +34,11 @@ public abstract class Auditable {
         this.dateCreated = dateCreated;
     }
 
-    public String getCreatedBy() {
+    public Long getCreatedBy() {
         return createdBy;
     }
 
-    public void setCreatedBy(String createdBy) {
+    public void setCreatedBy(Long createdBy) {
         this.createdBy = createdBy;
     }
 
@@ -50,11 +50,11 @@ public abstract class Auditable {
         this.dateUpdated = dateUpdated;
     }
 
-    public String getLastModifiedBy() {
+    public Long getLastModifiedBy() {
         return lastModifiedBy;
     }
 
-    public void setLastModifiedBy(String lastModifiedBy) {
+    public void setLastModifiedBy(Long lastModifiedBy) {
         this.lastModifiedBy = lastModifiedBy;
     }
 }
