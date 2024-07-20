@@ -16,7 +16,7 @@ import java.util.Set;
         @UniqueConstraint(columnNames = "username"),
         @UniqueConstraint(columnNames = "email")
 })
-public class User implements UserDetails {
+public class User extends Auditable implements UserDetails{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,7 +43,7 @@ public class User implements UserDetails {
     @Column(nullable = false, length = 30)
     private String country;
 
-    @Column(columnDefinition = "varchar(255) default 'please fill this'")
+    @Column(columnDefinition = "varchar(255) default 'Please fill this'")
     private String description;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -65,12 +65,6 @@ public class User implements UserDetails {
 
     @Column(nullable = false)
     private boolean isEnabled;
-
-    @Column(nullable = false)
-    private LocalDateTime dateCreated;
-
-    @Column(nullable = false)
-    private LocalDateTime dateUpdated;
 
     // Constructors
 
@@ -205,36 +199,16 @@ public class User implements UserDetails {
         return isEnabled;
     }
 
-    public LocalDateTime getDateCreated() {
-        return dateCreated;
-    }
-
-    public void setDateCreated(LocalDateTime dateCreated) {
-        this.dateCreated = dateCreated;
-    }
-
-    public LocalDateTime getDateUpdated() {
-        return dateUpdated;
-    }
-
-    public void setDateUpdated(LocalDateTime dateUpdated) {
-        this.dateUpdated = dateUpdated;
-    }
-
     @PrePersist
     public void prePersist() {
-        LocalDateTime now = LocalDateTime.now();
-        this.dateCreated = now;
-        this.dateUpdated = now;
-        if (this.description == null) {
-            this.description = "please fill this";
+        if (this.description == null || this.description.equals("")) {
+            this.description = "Please fill this";
         }
         validateDateOfBirth();
     }
 
     @PreUpdate
     public void preUpdate() {
-        this.dateUpdated = LocalDateTime.now();
         validateDateOfBirth();
     }
 
