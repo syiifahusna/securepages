@@ -4,13 +4,6 @@
 A simple project that use spring security dependency for simple authentication and authorization.
 
 
-## Demo
-
-Test server host: http://192.168.0.105/securepages/
-
-Warning: No ssl, view at your own risk
-
-
 ## Localhost
 
 To run this project on localhost:
